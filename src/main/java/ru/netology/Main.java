@@ -34,39 +34,29 @@ public class Main {
     }
 
 
-    public int[] top (int result[]){
+    public int[] top(int result[]) {
         int[] nationalTeam = new int[10];
-        for (int i = 0;i < nationalTeam.length; i++){
+        for (int i = 0; i < nationalTeam.length; i++) {
             for (int j = result.length - 1; j > 0; j--)
-                while (i <= 9){
+                while (i <= 9) {
                     nationalTeam[i] = result[j];
                 }
         }
         return nationalTeam;
     }
 
-    public static int[] merge(int[] teamOne, int[] teamTwo) {
-        int[] result = new int[10]; // Результирующая команда будет состоять из 10 лучших игроков
+    public static int[] merge(int[] teamA, int[] teamB) {
+        int[] result = new int[10];
         int i = 0, j = 0, k = 0;
 
-
-        while (i < teamOne.length && j < teamTwo.length && k < 10) {
-            if (teamOne[i] > teamTwo[j]) {
-                result[k++] = teamOne[i++];
+        while (i < teamA.length && j < teamB.length && k < 10) {
+            if (teamA[i] > teamB[j]) {
+                result[k++] = teamA[i++];
             } else {
-                result[k++] = teamTwo[j++];
+                result[k++] = teamB[j++];
             }
         }
-
-        // Если в одной из команд остались игроки, добавляем их в результат (если еще не набрали 10)
-        while (i < teamOne.length && k < 10) {
-            result[k++] = teamTwo[i++];
-        }
-
-        while (j < teamOne.length && k < 10) {
-            result[k++] = teamTwo[j++];
-        }
-
+        
         return result;
     }
 
